@@ -30,8 +30,21 @@ def detect_notes(audio_file):
     noterec = SequentialProcessor([rpnp, decode])
     notes = noterec(audio_file)
     for timestamp, note in notes:
-        print(f"{timestamp:.2f} => {note}")
+        print(f"{timestamp:.2f} => {note} {midi_to_note(note)}")
     return notes
+
+def detect_tempo(audio_file):
+    pass
+    # MAYBE
+
+def midi_to_note(midi_number):
+    midi_number = int(midi_number)
+    if 21 > midi_number > 127:
+        raise(ValueError)
+    notes = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B']
+    octave = (midi_number // 12) - 1
+    note_name = notes[midi_number % 12]
+    return f"{note_name}{octave}"
 
 def detect_key(audio_file):
     ckrp = CNNKeyRecognitionProcessor()
