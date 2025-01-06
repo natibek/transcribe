@@ -55,15 +55,18 @@ def detect_key(audio_file):
 
 if __name__ == "__main__":
     audio_file = "audio_files/dont_let_me_down.mp3"
+
+    print("Detect key")
+    key = detect_key(audio_file)
+
     print("DeepChromaProcessor")
     chords = detect_chords_deep(audio_file)
     # print("CNNChordFeatureProcessor")
     # chords2 = detect_chords_crf(audio_file)
+
     print("Detect Notes")
     notes = detect_notes(audio_file)
 
-    print("Detect key")
-    key = detect_key(audio_file)
     
 
 
