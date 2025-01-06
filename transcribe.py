@@ -39,8 +39,8 @@ def detect_tempo(audio_file):
 
 def midi_to_note(midi_number):
     midi_number = int(midi_number)
-    if 21 > midi_number > 127:
-        raise(ValueError)
+    if 21 > midi_number or midi_number > 127:
+        raise ValueError(f"Invalid midi number `{midi_number}`. Expected value between 21 and 127.")
     notes = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B']
     octave = (midi_number // 12) - 1
     note_name = notes[midi_number % 12]
