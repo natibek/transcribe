@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 while read line; do
   if [[ "$line" == *"madmom"* ]]; then
     madmom_version="$line"
